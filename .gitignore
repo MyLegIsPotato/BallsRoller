@@ -71,3 +71,7 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 Balls Roller/Library
+Balls Roller/Logs
+Balls Roller/Temp
+Balls Roller/.vsconfig
+Balls Roller/UpgradeLog.htm
