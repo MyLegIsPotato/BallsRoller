@@ -1,20 +1,16 @@
-using ModestTree;
-using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
     [SerializeField]
-    private float speed = 5f;
-
+    private float speed = 25f;
     [SerializeField]
     private MovementPanel movementPanel;
-
     private Rigidbody rigidbody;
 
-    private void Start()
+    internal void Initialize(MovementPanel movementPanel)
     {
-        Assert.IsNotNull(movementPanel, "MovementPanel is not assigned in the inspector");
+        this.movementPanel = movementPanel;
         movementPanel.ButtonUp_Clicked += MoveUp;
         movementPanel.ButtonDown_Clicked += MoveDown;
         movementPanel.ButtonLeft_Clicked += MoveLeft;

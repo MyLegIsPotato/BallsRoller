@@ -1,16 +1,14 @@
 using ModestTree;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EntitySpawner : MonoBehaviour
 {
     [SerializeField]
     private int spawnInterval = 3000;
-
     [SerializeField]
     private GameObject entityPrefab;
     [SerializeField]
-    private List<Transform> spawnTransforms = new List<Transform>();
+    private BoxCollider spawnArea;
 
     private void Awake()
     {
@@ -20,9 +18,11 @@ public class EntitySpawner : MonoBehaviour
 
     private void SpawnAtRandomTransform()
     {
-        print("Spawning entity");
-        int randomIndex = Random.Range(0, spawnTransforms.Count);
-        Transform randomTransform = spawnTransforms[randomIndex];
-        Instantiate(entityPrefab, randomTransform.position, randomTransform.rotation);
+        Vector3 position = new Vector3(
+            Random.Range(spawnArea.bounds.min.x, spawnArea.bounds.max.x),
+            Random.Range(spawnArea.bounds.min.y, spawnArea.bounds.max.y),
+            Random.Range(spawnArea.bounds.min.z, spawnArea.bounds.max.z)
+        );
+        Instantiate(entityPrefab, position, Quaternion.identity);
     }
 }
